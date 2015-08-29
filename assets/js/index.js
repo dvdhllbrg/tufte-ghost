@@ -19,6 +19,7 @@
         });
 
         setTimeout(placeFootnotes, 1);
+        addFigCaptions();
 
         $(window).resize(placeFootnotes);
 
@@ -39,4 +40,11 @@ var placeFootnotes = function() {
             $('a[href^="#fnref"]').remove();
         }
     }
+}
+
+var addFigCaptions = function() {
+    $('.post-content figure img').each(function(index, figure) {
+        var caption = $(figure).attr('alt');
+        $(figure).after('<figcaption>' + caption + '</figcaption>');
+    });
 }
