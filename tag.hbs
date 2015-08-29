@@ -2,7 +2,7 @@
 {{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
 
 {{! If we have a tag cover, display that - else blog cover - else nothing }}
-<header class="main-header tag-head {{#if tag.image}}" style="background-image: url({{tag.image}}){{else}}{{#if @blog.cover}}" style="background-image: url({{@blog.cover}}){{else}}no-cover{{/if}}{{/if}}">
+<header class="main-header tag-head">
     <nav class="main-nav overlay clearfix">
         {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>{{/if}}
         {{#if @blog.navigation}}
@@ -12,13 +12,13 @@
     <div class="vertical">
         <div class="main-header-content inner">
             <h1 class="page-title">{{tag.name}}</h1>
-            <h2 class="page-description">
+            <p class="page-description">
                 {{#if tag.description}}
                     {{tag.description}}
                 {{else}}
                     A {{pagination.total}}-post collection
                 {{/if}}
-            </h2>
+            </p>
         </div>
     </div>
 </header>
