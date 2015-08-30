@@ -346,7 +346,7 @@ img {
     max-width: 100%;
 }
 
-.table-caption {
+body.js .table-caption {
     float: right;
     clear: right;
     margin-right: -60%;
@@ -467,13 +467,12 @@ abbr[title] {
 
 .site-wrapper {
     position: relative;
-    z-index: 10;
     min-height: 100%;
     -webkit-transition: -webkit-transform 0.5s ease;
     transition: transform 0.5s ease;
 }
 
-body.nav-opened .site-wrapper {
+.nav-opened .site-wrapper {
     overflow-x: hidden;
     -webkit-transform: translate3D(-240px, 0, 0);
     -ms-transform: translate3D(-240px, 0, 0);
@@ -487,7 +486,11 @@ body.nav-opened .site-wrapper {
    5. General - The main styles for the the theme
    ========================================================================== */
 
-body.nav-opened .nav-cover {
+body.js .nav {
+    z-index: 5;
+}
+
+.nav-opened .nav-cover {
     position: fixed;
     top: 0;
     left: 0;
@@ -504,12 +507,16 @@ body.nav-opened .nav-cover {
     width: 240px;
     overflow-y: auto;
     background: #e6e6df;
-    z-index: 5;
+    z-index: -1;
     opacity: 0;
     margin-bottom: 0;
     text-align: left;
     -webkit-transition: -webkit-transform 0.5s ease, opacity 0.3s ease 0.7s;
     transition: transform 0.5s ease, opacity 0.3s ease 0.7s;
+}
+
+body.js .site-wrapper {
+    z-index: 10;
 }
 
 body.nav-closed .nav {
@@ -544,7 +551,6 @@ body.nav-opened .nav {
     line-height: 35px;
     white-space: nowrap;
     border-radius: 3px;
-    transition: all 0.5s ease;
     margin-right: 40px;
 }
 
@@ -588,7 +594,6 @@ body.nav-opened .nav {
     padding: 35px 0;
     margin: 0;
 }
-
 .nav-close {
     position: absolute;
     top: 38px;
@@ -653,10 +658,6 @@ body.nav-opened .nav {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     display: block;
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    right: 30px;
     height: 38px;
     padding: 0 20px;
     color: #111 !important;
@@ -667,7 +668,7 @@ body.nav-opened .nav {
     line-height: 35px;
     border-radius: 3px;
     background: #fff;
-    transition: all ease 0.3s;
+    margin: 30px 30px 30px;
 }
 
 .subscribe-button:before {
@@ -788,6 +789,11 @@ body.nav-opened .nav {
 
 .main-header {
     margin-bottom: 3rem;
+    margin-top: 58px;
+}
+
+body.js .main-header {
+    margin-top: 0;
 }
 
 .post {
@@ -806,8 +812,7 @@ body.nav-opened .nav {
     margin: 5rem 0 2rem;
 }
 
-.post-meta {
-    float: right;
+body.js .post-meta {
     text-align: right;
     margin-right: 12.5%;
 }
@@ -929,7 +934,18 @@ a[rel=footnote] {
 
 .author.subtitle {
     font-size: 1.5rem;
+    width: initial;
+}
+
+body.js .author.subtitle {
     float: left;
+}
+
+.main-header-content {
+    width: 65%;
+}
+
+body.js .main-header-content {
     width: initial;
 }
 
@@ -972,8 +988,8 @@ a[rel=footnote] {
     margin: 2rem auto;
     padding-right: 40px;
     font-size: 1.3rem;
-    text-align: center;
     color: #777;
+    text-align: center;
 }
 
 .pagination a {
@@ -1004,14 +1020,6 @@ a[rel=footnote] {
 .newer-posts {
     left: 0;
 }
-
-
-/* On page2+ make all the headers smaller */
-
-.archive-template .main-header {
-    max-height: 30vh;
-}
-
 
 /* ==========================================================================
    9. Footer - The bottom of every page
@@ -1044,19 +1052,54 @@ a[rel=footnote] {
     float: left;
 }
 
+.no-js-nav {
+    background: #e6e6df;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 12.5%;
+    z-index: 10;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.no-js-nav ul {
+    padding: 0;
+    margin-left: 0;
+    line-height: 1.6;
+    width: 100%;
+}
+
+.no-js-nav li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+.no-js-nav li.nav-current a,
+.no-js-nav a:hover,
+.no-js-nav a:active,
+.no-js-nav a:focus {
+    color: #111;
+}
+
+.no-js-nav li a {
+    color: #9A9A88;
+}
+
+
 /* ==========================================================================
    11. Media Queries - Smaller than 500px
    ========================================================================== */
 
 @media only screen and (max-width: 500px) {
     .home-template .main-header {
-        margin-bottom: 10rem;
+        margin-bottom: 15rem;
     }
     .post-template .post-header {
         margin-bottom: 2rem;
     }
     .main-header {
-        margin-bottom: 15px;
         height: 30vh;
     }
     .archive-template .main-header {
@@ -1064,11 +1107,11 @@ a[rel=footnote] {
         min-height: 160px;
         padding: 10% 0;
     }
-    .post-head.main-header {
+    .post-head .main-header {
         height: 30vh;
     }
-    .tag-head.main-header,
-    .author-head.main-header {
+    .tag-head .main-header,
+    .author-head .main-header {
         height: 20vh;
     }
     .archive-template .main-header .page-description {
