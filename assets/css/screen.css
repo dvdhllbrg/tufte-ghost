@@ -333,6 +333,8 @@ figcaption {
     position: relative;
 }
 
+figure.fullwidth figcaption { margin-right: 24%; }
+
 a {
     color: #111;
     text-decoration: none;
@@ -388,6 +390,9 @@ code {
     line-height: 1.6;
 }
 
+.fullwidth { max-width: 90%; }
+
+
 h1 code,
 h2 code,
 h3 code {
@@ -410,7 +415,6 @@ pre {
    ========================================================================== */
 
 sup {
-    font-variant: small-caps;
     font-size: 0.9rem;
 }
 
@@ -427,6 +431,9 @@ article {
     padding: 0 0;
 }
 
+abbr[title] {
+    border-bottom: 1px dotted;
+}
 
 /* ==========================================================================
    4. Utilities - These things get used a lot
@@ -880,6 +887,7 @@ body.nav-opened .nav {
 }
 
 a[rel=footnote] {
+    font-variant: small-caps;
     border-bottom: none;
     color: #ff0000;
 }
