@@ -18,11 +18,13 @@
             $("body").toggleClass("nav-opened nav-closed");
         });
 
+        // Convert figure image alt-texts to figcaptions.
         addFigCaptions();
 
         // If the window is resized, the footnotes will have to move.
         $(window).resize(placeFootnotes);
 
+        // Javascript is enabled, replace the no-js menu!
         noScriptSafeMenu();
     });
 
