@@ -18,13 +18,17 @@
             $("body").toggleClass("nav-opened nav-closed");
         });
 
-        // Wait to make sure everything is rendered before calculating the locations of footnotes.
-        setTimeout(placeFootnotes, 10);
         addFigCaptions();
 
         // If the window is resized, the footnotes will have to move.
         $(window).resize(placeFootnotes);
     });
+
+    // Wait to make sure everything is loaded before calculating the locations of footnotes.
+    $(window).load(function() {
+        placeFootnotes();
+    });
+
 
 })(jQuery);
 
@@ -32,6 +36,8 @@ var placeFootnotes = function() {
     var top, prev = null;
 
     if($(window).width() > 760) {
+        $('a[href^="#fnref"]').remove();
+
         $('.footnotes ol li').each(function(index, footnote) {
             top = Math.floor($('#fnref\\:' + (index+1)).position().top) - 24;
 
@@ -42,10 +48,12 @@ var placeFootnotes = function() {
             $(footnote).css('top', top + 'px');
             prev = footnote;
         });
+        console.log(top, $(prev).height());
 
-        $('a[href^="#fnref"]').remove();
+        if($('.post-content').height() < top + $(prev).height()) {
+            $('.post-content').height(top + $(prev).height());
+        }
 
-        $('.post-content').height(top);
     }
 }
 
