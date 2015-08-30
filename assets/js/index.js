@@ -39,7 +39,7 @@ var placeFootnotes = function() {
         $('a[href^="#fnref"]').remove();
 
         $('.footnotes ol li').each(function(index, footnote) {
-            top = Math.floor($('#fnref\\:' + (index+1)).position().top) - 24;
+            top = Math.floor($('#fnref\\:' + (index+1)).position().top) - Math.floor(parseInt($(footnote).css('fontSize'))*1.5);
 
             if(prev != null && $(prev).position().top + $(prev).height() > top) {
                 top = Math.floor($(prev).position().top + $(prev).height()) + 10;
@@ -48,7 +48,6 @@ var placeFootnotes = function() {
             $(footnote).css('top', top + 'px');
             prev = footnote;
         });
-        console.log(top, $(prev).height());
 
         if($('.post-content').height() < top + $(prev).height()) {
             $('.post-content').height(top + $(prev).height());
