@@ -1131,19 +1131,13 @@ body.js .main-header-content {
     .post-title {
         margin-bottom: 0.5rem;
     }
-    .author.subtitle {
+    body.js .author.subtitle {
         display: inline;
         font-size: inherit;
         float: none;
     }
-    .author.subtitle:after {
-        content: ", ";
-        margin-left: -1px;
-    }
-    .post-meta {
-        float: none;
+    body.js .post-meta {
         text-align: left;
-        display: inline;
         line-height: 1.5rem;
     }
     .post-footer {
