@@ -36,9 +36,15 @@ var placeFootnotes = function() {
     var top, prev = null;
 
     if($(window).width() > 760) {
+
+        $('.footnotes').addClass('footnotes-js');
+        $('.footnotes').removeClass('footnotes');
+        $('.footnote').addClass('footnote-js');
+        $('.footnote').removeClass('footnote');
+
         $('a[href^="#fnref"]').remove();
 
-        $('.footnotes ol li').each(function(index, footnote) {
+        $('.footnotes-js ol li').each(function(index, footnote) {
             top = Math.floor($('#fnref\\:' + (index+1)).position().top) - Math.floor(parseInt($(footnote).css('fontSize'))*1.5);
 
             if(prev != null && $(prev).position().top + $(prev).height() > top) {
