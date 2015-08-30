@@ -22,6 +22,8 @@
 
         // If the window is resized, the footnotes will have to move.
         $(window).resize(placeFootnotes);
+
+        noScriptSafeMenu();
     });
 
     // Wait to make sure everything is loaded before calculating the locations of footnotes.
@@ -67,4 +69,11 @@ var addFigCaptions = function() {
         var caption = $(figure).attr('alt');
         $(figure).after('<figcaption>' + caption + '</figcaption>');
     });
+}
+
+var noScriptSafeMenu = function() {
+    $('body').addClass('js');
+    $('.no-js-nav').addClass('hidden');
+    $('.menu-button').removeClass('hidden');
+    $('.menu-button').css('transition', 'all 0.5s ease;')
 }
