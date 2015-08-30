@@ -382,10 +382,6 @@ div.table-wrapper {
     }
 }
 
-.sans {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-}
-
 code {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 1.125rem;
@@ -423,6 +419,8 @@ mark {
     font-size: 1.2em;
     background: initial;
     color: inherit;
+    display: inline-block;
+    margin-top: 2.1em;
 }
 
 article {
@@ -883,6 +881,7 @@ body.nav-opened .nav {
 
 a[rel=footnote] {
     border-bottom: none;
+    color: #ff0000;
 }
 
 .post-template .author-image {
@@ -1087,7 +1086,7 @@ a[rel=footnote] {
     .newer-posts {
         margin-left: -10px;
     }
-    .author-image {
+    .post-template .author-image {
         float: none;
     }
     .author-meta {
