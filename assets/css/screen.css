@@ -13,7 +13,7 @@
     7.  Author profile
     8.  Pagination
     9.  Footer
-    10. Media Queries (<760px)
+    10. JS Styles
     11. Media Queries (Mobile)
 */
 
@@ -333,7 +333,9 @@ figcaption {
     position: relative;
 }
 
-figure.fullwidth figcaption { margin-right: 24%; }
+figure.fullwidth figcaption {
+    margin-right: 24%;
+}
 
 a {
     color: #111;
@@ -344,17 +346,6 @@ a {
 
 img {
     max-width: 100%;
-}
-
-body.js .table-caption {
-    float: right;
-    clear: right;
-    margin-right: -60%;
-    width: 50%;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 1.0rem;
-    line-height: 1.6;
 }
 
 p,
@@ -390,8 +381,9 @@ code {
     line-height: 1.6;
 }
 
-.fullwidth { max-width: 90%; }
-
+.fullwidth {
+    max-width: 90%;
+}
 
 h1 code,
 h2 code,
@@ -435,12 +427,14 @@ abbr[title] {
     border-bottom: 1px dotted;
 }
 
+hr {
+    border: #EBF2F6 1px solid;
+}
+
+
 /* ==========================================================================
-   4. Utilities - These things get used a lot
+   4. Utilities - Helper classes
    ========================================================================== */
-
-
-/* Clears shit */
 
 .clearfix:before,
 .clearfix:after {
@@ -463,7 +457,9 @@ abbr[title] {
 }
 
 
-/* Wraps the main content & footer */
+/* ==========================================================================
+   5. General - The main styles for the the theme
+   ========================================================================== */
 
 .site-wrapper {
     position: relative;
@@ -479,15 +475,6 @@ abbr[title] {
     transform: translate3D(-240px, 0, 0);
     -webkit-transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
-}
-
-
-/* ==========================================================================
-   5. General - The main styles for the the theme
-   ========================================================================== */
-
-body.js .nav {
-    z-index: 5;
 }
 
 .nav-opened .nav-cover {
@@ -513,10 +500,6 @@ body.js .nav {
     text-align: left;
     -webkit-transition: -webkit-transform 0.5s ease, opacity 0.3s ease 0.7s;
     transition: transform 0.5s ease, opacity 0.3s ease 0.7s;
-}
-
-body.js .site-wrapper {
-    z-index: 10;
 }
 
 body.nav-closed .nav {
@@ -570,9 +553,6 @@ body.nav-opened .nav {
     border-color: #555;
 }
 
-
-/* When the navigation is opened */
-
 .nav-opened .menu-button {
     padding: 0 12px;
     background: #e6e6df;
@@ -594,6 +574,7 @@ body.nav-opened .nav {
     padding: 35px 0;
     margin: 0;
 }
+
 .nav-close {
     position: absolute;
     top: 38px;
@@ -629,9 +610,6 @@ body.nav-opened .nav {
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
-
-
-/* When the navigation is closed and there is no cover image */
 
 .nav-closed .menu-button {
     border-color: #BFC8CD;
@@ -737,9 +715,6 @@ body.nav-opened .nav {
     color: #111;
 }
 
-
-/* When the navigation is closed and there is no cover image */
-
 .nav-closed .menu-button {
     border-color: #BFC8CD;
     color: #9EABB3;
@@ -749,9 +724,6 @@ body.nav-opened .nav {
     border-color: #555;
     color: #555;
 }
-
-
-/* Appears in the top left corner of your home page */
 
 .blog-logo {
     display: block;
@@ -772,9 +744,6 @@ body.nav-opened .nav {
     width: auto;
 }
 
-
-/* The details of your blog. Defined in ghost/settings/ */
-
 .page-title {
     margin: 10px 0 10px 0;
     font-size: 5rem;
@@ -790,10 +759,6 @@ body.nav-opened .nav {
 .main-header {
     margin-bottom: 3rem;
     margin-top: 58px;
-}
-
-body.js .main-header {
-    margin-top: 0;
 }
 
 .post {
@@ -812,18 +777,10 @@ body.js .main-header {
     margin: 5rem 0 2rem;
 }
 
-body.js .post-meta {
-    text-align: right;
-    margin-right: 12.5%;
-}
-
 
 /* ==========================================================================
    6. Single Post - When you click on an individual post
    ========================================================================== */
-
-
-/* The author credit area after the post */
 
 .post-footer {
     position: relative;
@@ -937,16 +894,8 @@ a[rel=footnote] {
     width: initial;
 }
 
-body.js .author.subtitle {
-    float: left;
-}
-
 .main-header-content {
     width: 65%;
-}
-
-body.js .main-header-content {
-    width: initial;
 }
 
 
@@ -980,9 +929,6 @@ body.js .main-header-content {
    8. Pagination - Tools to let you flick between pages
    ========================================================================== */
 
-
-/* The main wrapper for our pagination links */
-
 .pagination {
     position: relative;
     margin: 2rem auto;
@@ -996,9 +942,6 @@ body.js .main-header-content {
     color: #777;
     border-color: #777;
 }
-
-
-/* Push the previous/next links out to the left/right */
 
 .older-posts,
 .newer-posts {
@@ -1020,6 +963,7 @@ body.js .main-header-content {
 .newer-posts {
     left: 0;
 }
+
 
 /* ==========================================================================
    9. Footer - The bottom of every page
@@ -1085,6 +1029,47 @@ body.js .main-header-content {
 
 .no-js-nav li a {
     color: #9A9A88;
+}
+
+
+/* ==========================================================================
+   10. JS Styles - Styles that get added if JavaScript is enabled
+   ========================================================================== */
+
+body.js .table-caption {
+    float: right;
+    clear: right;
+    margin-right: -60%;
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.0rem;
+    line-height: 1.6;
+}
+
+body.js .nav {
+    z-index: 5;
+}
+
+body.js .site-wrapper {
+    z-index: 10;
+}
+
+body.js .main-header {
+    margin-top: 0;
+}
+
+body.js .post-meta {
+    text-align: right;
+    margin-right: 12.5%;
+}
+
+body.js .author.subtitle {
+    float: left;
+}
+
+body.js .main-header-content {
+    width: initial;
 }
 
 
